@@ -4,7 +4,7 @@
  Plugin URI: http://www.wp-shop.ru
  Description: Интеграция с 1C:Предприятие для плагина WP-Shop.
  Author: www.wp-shop.ru
- Version: 0.1
+ Version: 0.2
  Author URI: http://www.wp-shop.ru
  */
 
@@ -47,6 +47,7 @@ class Wpshop_Installer_1c
 												array('Field'=>'offer_avail'),
 												array('Field'=>'offer_name'),
 												array('Field'=>'offer_art'),
+												array('Field'=>'offer_desc'),
 												array('Field'=>'offer_cat'),
 												array('Field'=>'offer_pic'),
 												array('Field'=>'offer_atribs'),
@@ -136,6 +137,7 @@ class Wpshop_Installer_1c
 				  `offer_avail` int(11)  NULL,
 				  `offer_name` varchar(255)  NULL,
 				  `offer_art` varchar(255)  NULL,
+				  `offer_desc` longtext  NULL,
 				  `offer_cat` varchar(255)  NULL,
 				  `offer_pic` varchar(255)  NULL,
 				  `offer_atribs` varchar(500)  NULL,

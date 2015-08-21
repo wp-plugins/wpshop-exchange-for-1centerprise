@@ -213,12 +213,16 @@ function wpshop1c_save_offer_import($offer) {
   if($counter <= $limit) { 
 	  $artikul = '';
 	  $cats = '';
+	  $desc = '';
 	  $pic = '';
 	  $atribs = '';
 	  $is_deleted='';
 	 
 	  if(array_key_exists('Артикул', $offer)) {
 		$artikul = $offer['Артикул'];
+	  }
+	  if(array_key_exists('Описание', $offer)) {
+		$desc = $offer['Описание'];
 	  }
 	  if(array_key_exists('Группы', $offer)) {
 		$cats =  $offer['Группы'][0];
@@ -242,7 +246,7 @@ function wpshop1c_save_offer_import($offer) {
 		if ($is_deleted==1){
 		  $wpdb->update("{$wpdb->prefix}wpshop1c_offers",array('offer_avail' => 0),array('offer_kode' =>$offer['Ид']));
 		}else {
-		  $wpdb->update("{$wpdb->prefix}wpshop1c_offers",array('offer_avail' => 1,'offer_name' => $offer['Наименование'],'offer_art' => $artikul,'offer_pic' => $pic),array('offer_kode' =>$offer['Ид']));
+		  $wpdb->update("{$wpdb->prefix}wpshop1c_offers",array('offer_avail' => 1,'offer_name' => $offer['Наименование'],'offer_art' => $artikul, 'offer_desc' => $desc,'offer_pic' => $pic),array('offer_kode' =>$offer['Ид']));
 		}
 	  }else {
 		$wpdb->insert("{$wpdb->prefix}wpshop1c_offers",array(
@@ -250,12 +254,13 @@ function wpshop1c_save_offer_import($offer) {
 		  'offer_avail' => 1,
 		  'offer_name' => $offer['Наименование'],
 		  'offer_art' => $artikul,
+		  'offer_desc' => $desc,
 		  'offer_cat' => $cats,
 		  'offer_pic' => $pic, 
 		  'offer_atribs' => $atribs,
 		  'offer_time' => wpshop1c_TIMESTAMP,
 		  'affiliate_id' => 0
-		),array('%s','%d','%s','%s','%s','%s','%s','%s','%d'));
+		),array('%s','%d','%s','%s','%s','%s','%s','%s','%s','%d'));
 	  }
  	  $counter++;
   }   

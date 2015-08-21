@@ -219,7 +219,7 @@ function generatePost($data) {
 		
     $post = array(
 				'post_category' => array($data->offer_term),
-				'post_content' => '',
+				'post_content' => $data->offer_desc,
 				'post_name' => translit($data->offer_name),
 				'post_status' => 'publish',
 				'post_title' => $data->offer_name,
